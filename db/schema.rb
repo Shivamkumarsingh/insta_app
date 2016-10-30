@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026184308) do
+ActiveRecord::Schema.define(version: 20161028061120) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "commenter"
+    t.text     "body"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
+
+  create_table "likes", force: :cascade do |t|
+    t.boolean  "upvote"
+    t.boolean  "downvote"
+    t.integer  "post_id"
+    t.integer  "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "likes", ["comment_id"], name: "index_likes_on_comment_id"
+  add_index "likes", ["post_id"], name: "index_likes_on_post_id"
 
   create_table "posts", force: :cascade do |t|
     t.text     "description"
@@ -36,6 +58,9 @@ ActiveRecord::Schema.define(version: 20161026184308) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.date     "dob"
+    t.string   "gender"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

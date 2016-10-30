@@ -1,3 +1,11 @@
 <%= image_tag(@post.image.url(:medium)) %>
 <br>
 <%=@post.description %>
+<h1>Comments</h1>
+ <%= @post.description %>
+   <% @p = @post.comments.length %>
+   <p>Views all total <%= @p %> comments </p>
+<%= render @post.comments %>
+
+<h1> Add a Comment</h1>
+<%= render 'comments/form' %>

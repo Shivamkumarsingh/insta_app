@@ -1,0 +1,13 @@
+<% @post = user.posts.first %>
+<div id="send_like_for_<%= @post.id %>">
+     <% if @post.is_liked?(@post, current_user)%>
+    <%= render 'unlike'%>
+     <%else%>
+        <%= render 'like'%>
+     <%end%>
+</div>
+
+<div id="liked_<%= @post.id %>" %>
+    <%= render 'liked_users'%>
+</div>
+

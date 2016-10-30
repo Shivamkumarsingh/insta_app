@@ -15,4 +15,11 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
- 
+body  {
+    background-image: url("background.jpg");
+    
+}
+ .col-sm-12
+ {
+  margin-bottom: 30px;
+  }
